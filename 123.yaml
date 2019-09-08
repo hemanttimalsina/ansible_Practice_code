@@ -1,0 +1,27 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: create group
+      group:
+        name: developers
+        state: present
+
+    - name: create user
+      user:
+        name: hemantaa
+        group: developers
+
+    - name: create file
+      file:
+        path: /home/hemantaa/test.text
+        state: touch
+
+    - name: installing httpd
+      package:
+        name: httpd
+        state: absent
+
+    - name: starting httpd
+      service: 
+        name: httpd
+        state: started
