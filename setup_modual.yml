@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: gather facts        
+      debug:
+        msg: "Os_family={{ansible_os_family}},ansible_processo ={{ansible_processor}},ansible_product={{ansible_product_name}}"

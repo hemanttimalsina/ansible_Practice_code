@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: print hostname
+      command: hostname 
+      register: hemant
+
+    - name: Hostname display
+      debug:
+        msg: "hostname={{hemant.stdout}},start={{hemant.start}}"

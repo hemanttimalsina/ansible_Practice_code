@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  vars: 
+  #package: gcc
+    package: httpd
+  tasks:
+    - name: install {{package}}
+      package:
+        name: "{{package}}"
+        state: present

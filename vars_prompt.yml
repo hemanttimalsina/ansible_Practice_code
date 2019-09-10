@@ -1,0 +1,17 @@
+- hosts: all
+  become: yes
+  vars_prompt:
+    - name : package
+      prompt: "Enter package name:"
+      private: no
+  tasks:
+    - name: Installing {{package}}
+      package:
+        name: "{{package}}"
+        state: present
+
+    - name: Starting service
+      service:
+        name: "{{package}}"
+        state: started
+        enabled: yes 
